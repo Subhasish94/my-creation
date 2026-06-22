@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>color-picker</title>
+</head>
+
+<body>
+    <style>
+        .wrap {
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .color-tracker {
+            height: 150px;
+            width: 100%;
+            position: relative;
+        }
+
+        .changer-color {
+            position: absolute;
+            top: 0;
+            left: 50px;
+            height: 100%;
+            width: 20px;
+            background-color: transparent;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+    </style>
+
+    <section>
+        <div class="wrap">
+            <div class="display-color"></div>
+            <div class="color-tracker"
+                style="background: linear-gradient(to right, #f00 0, #ff0 16%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 84%, #ff0004 100%); height: 200px; width: 100%;">
+                <div class="changer-color"></div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                const $colorTracker = $('.color-tracker');
+                const $changerColor = $('.changer-color');
+                let isMouseDown = false;
+                $changerColor.on('mousedown', function (e) {
+                    isMouseDown = true;
+                    e.preventDefault();
+                });
+                $colorTracker.on('mousemove', function (e) {
+                    if (!isMouseDown) return;
+                    const trackerOffset = $colorTracker.offset();
+                    let newPosition = e.clientX - trackerOffset.left;
+                    newPosition = Math.max(0, Math.min(newPosition, $colorTracker.width() - $changerColor.width()));
+                    $changerColor.css('left', newPosition);
+                });
+                $(document).on('mouseup', function () {
+                    isMouseDown = false;
+                });
+            });
+        </script>
+    </section>
+    <script src="script.js"></script>
+</body>
+
+</html>

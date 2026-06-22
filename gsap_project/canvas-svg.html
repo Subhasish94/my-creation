@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <section>
+            <div class="container mt-5">
+                <div class="canvas-div">
+                    <canvas id="myCanvas" width="200" height="200" style="border:1px solid red;">
+
+                    </canvas>
+                </div>
+            </div>
+            <script>
+                const canvas = document.getElementById('myCanvas');
+                const ctx = myCanvas.getContext("2d");
+
+                // ctx.fillRect(20, 20, 150, 100);
+
+                // Define a new path
+                ctx.beginPath();
+
+                // Set a start-point
+                ctx.moveTo(0, 0); // moveTo(x, y) - defines the starting point of the line
+
+
+                // Set an end-point
+                ctx.lineTo(200, 200);
+                // lineTo(x, y) - defines the ending point of the line
+
+                // Draw it
+                ctx.stroke();
+            </script>
+        </section>
+        <section class="container d-none">
+            <canvas id="canvas_2" height="200px" width="400px" style="border: 1px solid green;"></canvas>
+            <script>
+                const canvas_2 = document.getElementById('canvas_2');
+                const ctx_2 = canvas_2.getContext("2d");
+
+                // fillRect(x, y, width, height)
+                // ctx_2.fillRect(50, 20, 150, 75);
+                ctx_2.lineTo(100, 20);
+                ctx_2.lineTo(175, 100);
+                ctx_2.lineTo(20, 100);
+
+            </script>
+        </section>
+        <section class="create-svg container">
+            <table>
+                <tbody>
+                    <tr>
+                        <th style="width:20%">Attribute</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>d</td>
+                        <td>Required. A set of commands which define the path.
+                            <p>The following commands are available for path data:</p>
+                            <ul>
+                                <li>M = moveto (move from one point to another point)</li>
+                                <li>L = lineto (create a line)</li>
+                                <li>H = horizontal lineto (create a horizontal line)</li>
+                                <li>V = vertical lineto (create a vertical line)</li>
+                                <li>C = curveto (create a curve)</li>
+                                <li>S = smooth curveto (create a smooth curve)</li>
+                                <li>Q = quadratic Bézier curve (create a quadratic Bézier curve)</li>
+                                <li>T = smooth quadratic Bézier curveto (create a smooth quadratic Bézier curve)</li>
+                                <li>A = elliptical Arc (create a elliptical arc)</li>
+                                <li>Z = closepath (close the path)</li>
+                            </ul>
+                            <p><b>Note:</b> All of the commands above can also be expressed in lower case.
+                                Upper case means absolutely positioned, lower case means relatively positioned.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <hr>
+            <br>
+            <style>
+                .create-svg td {
+                    vertical-align: top;
+                }
+            </style>
+        </section>
+        <section>
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3">
+
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th style="width:20%">Attribute</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr>
+                                    <td>x1</td>
+                                    <td>The start of the line on the x-axis</td>
+                                </tr>
+                                <tr>
+                                    <td>y1</td>
+                                    <td>The start of the line on the y-axis</td>
+                                </tr>
+                                <tr>
+                                    <td>x2</td>
+                                    <td>The end of the line on the x-axis</td>
+                                </tr>
+                                <tr>
+                                    <td>y2</td>
+                                    <td>The end of the line on the y-axis</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <div class="col-lg-6">
+                        <svg id="create_svg" height="300" width="200">
+                            <line class="line_svg line_one" x1="0" y1="0" x2="300" y2="00" />
+                            <line class="line_svg line_line_two" x1="0" y1="10" x2="300" y2="10"
+                                style="stroke-width: 1;" />
+                            <line class="line_svg line_three" x1="0" y1="20" x2="300" y2="20"
+                                style=" stroke: black; stroke-width: 1;" />
+                        </svg>
+                        <svg height="200" width="200" stroke="green" stroke-width="3" fill="red">
+                            <circle r="45" cx="100" cy="50" stroke="green" stroke-width="3" fill="none"></circle>
+                            <circle r="25" cx="100" cy="50" stroke="red" stroke-width="10" fill="none"></circle>
+                            Sorry, your browser does not support inline SVG.
+                        </svg>
+                        <script>
+                            $(document).ready(function () {
+                                $("#create_svg").click(function () {
+                                    $(this).find('.line_one').attr("x2", "50");
+                                    // alert("clicked")
+                                });
+                            });
+                        </script>
+                        <style>
+                            .line_svg {
+                                fill: gray;
+                                stroke: red;
+                                stroke-width: 2;
+                                transition: all 5s;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

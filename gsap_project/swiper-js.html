@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Slider Control</title>
+</head>
+
+<body>
+    <section class="slider-control">
+        <div class="container">
+            <div class="row">
+            </div>
+        </div>
+    </section>
+    <section class="slider-control-section">
+        <div class="container">
+            <div class="row align-items-end">
+                <div class="col-6">
+                    <div id="abc">
+                        <div id="slider-block-1">
+                            <label>Slides PerView: <span class="slides_PerView_set-1">1</span></label>
+                            <input type="range" class="slider" id="slides_PerView_get-1" value="1" min="1" max="20"
+                                step="1">
+                            <label>Space Between: <span class="spaceBetween_set-1">0</span>px</label>
+                            <input type="range" class="slider" id="spaceBetween-1" value="0" min="0" max="50" step="1">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-secondary" id="add_breakpoint_btn">Add Breakpoint</button>
+                </div>
+                <div class="col-2"><button class="btn btn-info" id="show_finl_result">Get Result</button></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="result-section">
+        <div class="container">
+            <div id="final-result">
+                <h4>Slider Values</h4>
+                <div id="slider-values"></div>
+            </div>
+        </div>
+    </section>
+    <div class="kk">
+        kkkk
+    </div>
+    
+    <script>
+        $(document).ready(function () {
+            let counter = 1; // To create unique IDs for each set of sliders
+
+            // Show default values immediately
+            $('#slides_PerView_result').text(1);
+            $('#spaceBetween_result').text(0);
+            $('#breakpoint_result').text(0);
+
+            // Initialize the first slider values
+            range_value(counter);
+
+            // Add new sliders when the button is clicked
+            $('#add_breakpoint_btn').click(function () {
+                counter++; // Increment counter to create unique IDs
+
+                // Add sliders to #abc div with unique IDs based on the counter
+                $('#abc').append(`
+                    <div id="slider-block-${counter}">
+                        <label>Breakpoint: <span class="breakpoint_set-${counter}">0</span></label>
+                        <input type="number" class="form-control" id="breakpoint-${counter}" value="0">
+                        <label>Slides PerView: <span class="slides_PerView_set-${counter}">1</span></label>
+                        <input type="range" class="slider" id="slides_PerView_get-${counter}" value="1" min="1" max="20" step="1">
+                        <label>Space Between: <span class="spaceBetween_set-${counter}">0</span>px</label>
+                        <input type="range" class="slider" id="spaceBetween-${counter}" value="0" min="0" max="50" step="1">
+                    </div>
+                `);
+
+                // After appending the new slider, set up the event listener for it
+                range_value(counter);
+            });
+
+            // Display the final result when the "Get Result" button is clicked
+            $('#show_finl_result').click(function () {
+                console.log("Slider Values:"); // Check if the event is triggered
+
+                // Initialize resultHtml variable to store all results
+                let resultHtml = "";
+
+                // Iterate through each slider block and get the values
+                $('.slider').each(function () {
+                    const sliderId = $(this).attr('id');
+                    const sliderValue = $(this).val();
+                    let label = $(this).prev('label').text(); // Get label directly before the input
+
+                    // Check if label and value are being correctly fetched
+                    console.log(`Label: ${label}, Value: ${sliderValue}`);
+
+                    // Append the result for each slider
+                    resultHtml += `${label}: ${sliderValue}<br>`;
+                });
+
+                // Display the result in .kk div
+                console.log(resultHtml); // Debug: check the final result
+                $('.kk').html(resultHtml); // Display result in .kk div
+            });
+        });
+
+        // Function to handle the slider values dynamically
+        function range_value(counter) {
+            // Handle input event for all sliders
+            $(`#slider-block-${counter} .slider`).on('input', function () {
+                const slidesPerView = $(`#slides_PerView_get-${counter}`).val();
+                const spaceBetween = $(`#spaceBetween-${counter}`).val();
+                const breakpoint = $(`#breakpoint-${counter}`).val();
+
+                // Update the labels for the current slider
+                $(`.slides_PerView_set-${counter}`).text(slidesPerView);
+                $(`.spaceBetween_set-${counter}`).text(spaceBetween);
+                $(`.breakpoint_set-${counter}`).text(breakpoint);
+
+                // Update the final result in #abc (first set of sliders)
+                $('#slides_PerView_result').text(slidesPerView);
+                $('#spaceBetween_result').text(spaceBetween);
+                $('#breakpoint_result').text(breakpoint);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

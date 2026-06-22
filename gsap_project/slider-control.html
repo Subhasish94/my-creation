@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>slider-control</title>
+</head>
+
+<body>
+    <section class="slider-control">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <div class="slider-container mw-100">
+                        <label class=""> slides PerView: <span class="slides_PerView_set">1</span></label>
+                        <input type="range" class="slider" id="slides_PerView_get" value="1" min="1" max="20" step="1">
+                        <label class="">spaceBetween: <span class="spaceBetween_set">0</span>px</label>
+                        <input type="range" class="slider" id="spaceBetween" value="0" min="0" max="50" step="1">
+                        <!-- <label class="">speed: <span class="">0</span>px</label>
+                        <input type="range" class="slider" id="" value="0" min="0" max="100" step="1">
+                        <label class="">Spread Radius: <span class="">0</span>px</label>
+                        <input type="range" class="slider" id="" value="0" min="-200" max="200" step="1">
+                        <label class="">opacity: <span class="opacity_set_value">0.5</span></label>
+                        <input type="range" class="slider" id="opacity" value="0.5" min="0" max="1" step="0.01"> -->
+                        <input type="checkbox" name="" id="auto_play">
+                        <label for="auto_play">auto play</label>
+                        <div class="autoplay">
+                            <label for="">delay: <span class="delay_set">5000</span> </label>
+                            <br>
+                            <input type="number" class="form-control " value="5000" id="delay_get"
+                                placeholder="delay in ms">
+                            <label for="">disableOnInteraction: <span class="disableOnInteraction_set"></span></label>
+                            <select name="" id="disableOnInteraction_get" class="mw-100 w-100 ">
+                                <option value="true">True</option>
+                                <option value="false" selected>False</option>
+                                <option value="none">none</option>
+                            </select>
+                        </div>
+                        <br>
+                        <input type="checkbox" name="" id="add_breakpoint">
+                        <label for="add_breakpoint">Add Breakpoind</label>
+                        <!-- <div class="breakpoind ">                            
+                            <div class="each_break_point bg-success py-3 px-2 mb-2">
+                                <p>viewport <span class="breakpoint_set">1199</span></p>
+                                <label class=""> slides PerView: <span class="slides_PerView_set">1</span></label>
+                                <input type="range" class="slider" id="slides_PerView_get" value="1" min="1" max="20"
+                                    step="1">
+                                <label class="">spaceBetween: <span class="spaceBetween_set">0</span>px</label>
+                                <input type="range" class="slider" id="spaceBetween" value="0" min="0" max="50"
+                                    step="1">
+                                    <span class="btn btn-danger" id="ff">remove</span>
+                            </div>
+                            <div class="add_field_sec">
+                                <input type="number" name="" id="add_new-breakpoint" value="" placeholder="Add breakpoint here">
+                                <button class="btn btn-sm btn-outline-secondary">add</button>
+                                <button class="btn btn-sm btn-outline-secondary">add&more break point</button>
+                            </div>
+                        </div> -->
+
+
+
+                        <div class="breakpoind">
+                            <!-- Breakpoint field template -->
+                            <!-- <div class="each_break_point bg-success mb-3">
+                                <p>viewport <span class="breakpoint_set">1199</span></p>
+                                <label class=""> slides PerView: <span class="">1</span></label>
+                                <input type="range" class="slider" id="" value="1" min="1" max="20" step="1">
+                                <label class="">spaceBetween: <span class="">0</span>px</label>
+                                <input type="range" class="slider" id="" value="0" min="0" max="50" step="1">
+                                <span class="btn btn-danger remove-breakpoint" id="">remove</span>
+                            </div> -->
+
+                            <!-- Add new breakpoint section -->
+                            <div class="add_field_sec">
+                                <input type="number" name="" id="add_new-breakpoint" value=""
+                                    placeholder="Add breakpoint here">
+                                <br>
+                                <span class="btn btn-sm btn-outline-secondary" id="add_breakpoint_btn">add</span>
+                                <span class="btn btn-sm btn-outline-secondary" id="add_more_breakpoint_btn">add & more
+                                    break point</span>
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="">
+        <div id="abc">ABC</div>
+    </section>
+    <script src="script.js"></script>
+    <script>
+       
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Color Tracker</title>
+    <style>
+        .color-tracker {
+            height: 100px;
+            width: 50%;
+            cursor: pointer;
+            position: relative;
+            background: linear-gradient(to right, #f00 0%, #ff0 16%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 84%, #ff0004 100%);
+
+        }
+
+        #result-name {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .show_value {
+            height: 150px;
+            width: 150px;
+        }
+
+        .background {
+            background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#000));
+            background: linear-gradient(to bottom, transparent 0%, #000 100%);
+            height: 400px;
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="color-tracker"></div>
+    <div id="result-name">Color at pointer: </div>
+    <div class="show_value"></div>
+    <div class="background"></div>
+    <!-- 
+    <script>
+        document.querySelector('.color-tracker').addEventListener('mousemove', function(event) {
+            // Create a canvas to replicate the background
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            
+            // Set the canvas size to match the div's size
+            canvas.width = this.offsetWidth;
+            canvas.height = this.offsetHeight;
+
+            // Create a gradient that matches the div's background
+            var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+            gradient.addColorStop(0, '#f00');
+            gradient.addColorStop(0.16, '#ff0');
+            gradient.addColorStop(0.33, '#0f0');
+            gradient.addColorStop(0.5, '#0ff');
+            gradient.addColorStop(0.67, '#00f');
+            gradient.addColorStop(0.84, '#f0f');
+            gradient.addColorStop(1, '#ff0004');
+            
+            // Fill the canvas with the gradient
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Get the mouse position relative to the div
+            var rect = this.getBoundingClientRect();
+            var x = event.clientX - rect.left;
+
+            // Get the pixel color at the mouse position
+            var pixel = ctx.getImageData(x, 1, 1, 1).data;
+            var color = `rgb(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`;
+
+            // Display the color in the result-name div
+            document.getElementById('result-name').textContent = `Color at pointer: ${color}`;
+        });
+    </script> -->
+    <script>$('.color-tracker').on('mousemove', function (event) {
+            // Create a canvas to replicate the background
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+
+            // Set the canvas size to match the div's size
+            canvas.width = $(this).width();
+            canvas.height = $(this).height();
+
+            // Create a gradient that matches the div's background
+            var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+            gradient.addColorStop(0, '#f00');
+            gradient.addColorStop(0.16, '#ff0');
+            gradient.addColorStop(0.33, '#0f0');
+            gradient.addColorStop(0.5, '#0ff');
+            gradient.addColorStop(0.67, '#00f');
+            gradient.addColorStop(0.84, '#f0f');
+            gradient.addColorStop(1, '#ff0004');
+
+            // Fill the canvas with the gradient
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Get the mouse position relative to the div
+            var rect = $(this)[0].getBoundingClientRect();
+            var x = event.clientX - rect.left;
+
+            // Get the pixel color at the mouse position
+            var pixel = ctx.getImageData(x, 1, 1, 1).data;
+            var color = `rgb(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`;
+
+            // Display the color in the result-name div
+            $('#result-name').text(`Color at pointer: ${color}`);
+            $(".show_value").css('background', `${color}`);
+
+        });
+    </script>
+</body>
+
+</html>
