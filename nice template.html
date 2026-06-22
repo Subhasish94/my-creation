@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Modern Layout</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Zig-zag breakout */
+.left-touch {
+  margin-left: calc(-1 * (100vw - 100%) / 2);
+  width: 50vw;
+}
+
+.right-touch {
+  margin-right: calc(-1 * (100vw - 100%) / 2);
+  width: 50vw;
+}
+
+/* Sticky section */
+.sticky-img {
+  position: sticky;
+  top: 100px;
+}
+
+/* Hero */
+.hero {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(120deg, #4f46e5, #06b6d4);
+  color: white;
+}
+
+/* Cards */
+.card-box {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border: none;
+}
+
+section {
+  padding: 80px 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero container-fluid">
+  <div class="container">
+    <h1>Modern Website Design</h1>
+    <p>Clean, responsive Bootstrap layout</p>
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<section class="container">
+  <div class="row align-items-center">
+    <div class="col-md-6">
+      <h2>About Section</h2>
+      <p>This is a normal centered container section.</p>
+    </div>
+    <div class="col-md-6">
+      <div class="bg-light p-5 text-center">Image</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 (LEFT TOUCH) -->
+<section class="container">
+  <div class="bg-success text-white p-5 left-touch">
+    <h2>Left Touch Section</h2>
+    <p>Breaks out to left edge but keeps container alignment on right.</p>
+  </div>
+</section>
+
+<!-- SECTION 4 (RIGHT TOUCH) -->
+<section class="container">
+  <div class="d-flex justify-content-end">
+    <div class="bg-warning p-5 right-touch text-dark">
+      <h2>Right Touch Section</h2>
+      <p>Breaks out to right edge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY SECTION -->
+<section class="container">
+  <div class="row">
+    
+    <div class="col-md-6">
+      <div class="sticky-img bg-primary text-white p-5">
+        Sticky Image Area
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h2>Scrolling Content</h2>
+      <p>Lorem ipsum content goes here...</p>
+      <p style="height: 800px;">Scroll space...</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="container text-center">
+  <h2 class="mb-5">Our Features</h2>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card card-box p-4">Feature 1</div>
+    </div>
+    <div class="col-md-4">
+      <div class="card card-box p-4">Feature 2</div>
+    </div>
+    <div class="col-md-4">
+      <div class="card card-box p-4">Feature 3</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-4">
+  Footer Section
+</footer>
+
+</body>
+</html>
