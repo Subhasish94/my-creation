@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="custom.css">
+  <style id="dynamic-styles"></style>
+  <script src="jquery.js"></script>
+</head>
+
+<body>
+
+  <div id="controls">
+    <div class="heading">
+      <h1>resize div</h1>
+    </div>
+    <label for="rightClassInput">Container class:</label>
+    <input type="text" id="add-parent-class" value="custom_container">
+    <label for="custom_containerMaxWidthInput">Container Max-Width:</label>
+    <input type="text" id="custom_containerMaxWidthInput" value="100%">
+    <br><br>
+    <label for="leftClassInput">Left Class:</label>
+    <input type="text" id="leftClassInput" value="left">
+    <label for="rightClassInput">Right Class:</label>
+    <input type="text" id="rightClassInput" value="right">
+    <label for="gapInput">Gap (px):</label>
+    <input type="text" id="gapInput" value="10" min="0">
+    <br><br>
+    <span class="info" id="widthInfo"></span>
+    <br><br>
+    <button onclick="applyClasses()">Apply Classes</button>
+    <button id="copyCssBtn" onclick="copyCSS()" disabled>Copy CSS</button>
+    <button id="copyHtmlBtn" onclick="copyHTML()" disabled>Copy HTML</button>
+
+  </div>
+  <div class="overlay" onclick="overlay()"></div>
+  <div class="tt">
+    <div class="tt-content">
+      <button class="tt-close" onclick="closeCSSPopup()">×</button>
+      <button class="tt-copy" onclick="copyCSSToClipboard()">Copy CSS</button>
+      <pre><code id="tt-css-output"></code></pre>
+    </div>
+  </div>
+  <div class="custom_container" id="custom_container">
+    <div class="left" id="left">Left Panel
+      <br>
+      <span>Left Panel width = <b class="left_width"></b> px</span>
+    </div>
+    <div class="right" id="right">Right Panel
+      <br>
+      <span>Right Panel width = <b class="right_width"></b> px</span>
+    </div>
+    <div class="drag" id="drag"></div>
+  </div>
+  <div id="successMessage">
+    Copied successfully!
+  </div>
+</body>
+<script src="custom.js"></script>
+
+</html>

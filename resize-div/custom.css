@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    margin: 0;
+    font-family: sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.heading{
+    text-align: center;
+}
+#controls {
+    padding: 10px;
+    background: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+    max-width: 1400px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+#controls input {
+    margin-left: 5px;
+    margin-right: 10px;
+    padding: 10px;
+}
+.custom_container {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    gap: 10px;
+}
+.left, .right {
+    height: 100%;
+    overflow: auto;
+}
+.left {
+    background: #d1e0ff;
+}
+.right {
+    background: #ffe0e0;
+}
+.drag {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    cursor: ew-resize;
+    z-index: 10;
+    background: #888;
+}
+.drag::after {
+    position: absolute;
+    left: -50%;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    border-left: 5px dashed rgb(14, 6, 255);
+    content: "";
+    opacity: 0;
+    transition: all 0.5s;
+}
+.custom_container:hover .drag::after {
+    opacity: 1;
+}
+button {
+    margin-left: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.info {
+    display: inline-block;
+}
+#left {
+    background-color: red;
+    padding: 5%;
+    height: 400px;
+}
+#right {
+    background-color: yellow;
+    padding: 5%;
+    height: 400px;
+}
+.tt {
+    position: fixed;
+    top: 27%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 600px;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    padding: 20px;
+    display: none;
+}
+.tt-content {
+    position: relative;
+}
+.tt-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background: red;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 0;
+}
+.tt-copy {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: none;
+    background: green;
+    color: white;
+    font-size: 14px;
+    padding: 10px 10px;
+    cursor: pointer;
+}
+.tt pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    background: gray;
+    padding: 20px;
+    overflow-x: auto;
+}
+.overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #09080899;
+    z-index: 11;
+    display: none;
+}
+#successMessage {
+    display: none;
+    width: 100%;
+    position: fixed;
+    top: 10px;
+    left: 0%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    z-index: 9999;
+    text-align: center;
+}
+button:disabled {
+    cursor:no-drop;
+}
