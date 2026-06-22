@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body style="background-color: cadetblue;">
+	<div class="box1"> </div>
+	<div class="box2"></div>
+
+	<!-- <img src="https://picsum.photos/id/152/300/300" alt="Purple flowers"> -->
+</body>
+<style>
+	.box1 {
+		width: 300px;
+		aspect-ratio: 1;
+		display: inline-block;
+		/* border: 1px solid blue; */
+		--g: 6px;
+		/* control the gap */
+		--r: 42px;
+		--left:30%;
+		/* control the circular shapes */
+		background:
+			radial-gradient(var(--r) at left var(--left) bottom var(--r), green 100%, #0000),
+			radial-gradient(calc(var(--r) + var(--g)) at calc(100% + var(--g)) 50%, #0000 95%, red) top/100% calc(100% - var(--r)) no-repeat;
+	}
+
+	.box2 {
+		width: 300px;
+		aspect-ratio: 1;
+		display: inline-block;
+		border: 1px solid blue;
+		--g: 6px;
+		/* control the gap */
+		--r: 42px;
+		/* control the circular shapes */
+		background:
+			radial-gradient(var(--r) at left 50% bottom var(--r), green 95%, #0000),
+			radial-gradient(calc(var(--r) + var(--g)) at calc(100% + var(--g)) 50%, #0000 95%, red) top/100% calc(100% - var(--r)) no-repeat;
+	}
+</style>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>jquery</title>
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/swiper-bundle.min.css">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/responsive.css" rel="stylesheet">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/swiper-bundle.min.js"></script>
+</head>
+<style>
+	body {
+		font-family: Arial, sans-serif;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		background-color: #f0f0f0;
+	}
+
+	.oned {
+		position: relative;
+		width: 80%;
+		height: 50px;
+		background: linear-gradient(to right, red 0%, #ff0 17%, lime 33%, cyan 50%, blue 66%, #f0f 83%, red 100%);
+		border: 1px solid #ccc;
+		border-radius: 25px;
+	}
+
+	.pointer {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		width: 20px;
+		background: #fff;
+		border: 2px solid #000;
+		border-radius: 50%;
+		cursor: pointer;
+	}
+
+	.bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: transparent;
+	}
+
+	.shape {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: transparent;
+	}
+
+	.bg {
+		background: linear-gradient(to right, red 0%, #ff0 17%, lime 33%, cyan 50%, blue 66%, #f0f 83%, red 100%);
+	}
+</style>
+
+<body>
+	<div id="page">
+
+		<main>
+			<div class="oned">
+				<div class="pointer" >
+					<div class="shape"></div>
+				</div>
+				<div class="bg"></div>
+			</div>
+			<script>
+
+				$(document).ready(function () {
+					// Allow the pointer to be dragged along the gradient
+					$('.pointer').on('mousedown', function (e) {
+						var $this = $(this);
+						var $oned = $('.oned');
+						var offset = $oned.offset();
+						var width = $oned.width();
+
+						// Track mouse movement
+						$(document).on('mousemove', function (e) {
+							var left = e.pageX - offset.left;
+							if (left < 0) left = 0;
+							if (left > width) left = width;
+
+							// Move the pointer
+							$this.css('left', left);
+						});
+
+						// Remove the mousemove event when mouse is released
+						$(document).on('mouseup', function () {
+							$(document).off('mousemove');
+						});
+					});
+				});
+			</script>
+		</main>
+		<!----mobile contact bar------->
+		<div id="mobile-contact-bar">
+			<div id="mobile-contact-bar-outer">
+				<ul>
+					<li>
+						<a href="">
+							<img src="images/phone.svg" alt="">
+						</a>
+					</li>
+					<li class="li_color">
+						<a href="">
+							<img src="images/mail.svg" alt="">
+						</a>
+					</li>
+					<li class="li_color">
+						<a>
+							<img src="images/pin.svg" alt="">
+						</a>
+					</li>
+					<li class="li_color" style="background-color: #25D366;">
+						<a>
+							<img src="images/whatsapp.svg" alt="">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
